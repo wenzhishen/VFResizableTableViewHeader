@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VFResizableTableViewHeader : UIView
-
+- (instancetype)initWithTableView:(UITableView *)tableView initialHeight:(CGFloat)height;
 @end
