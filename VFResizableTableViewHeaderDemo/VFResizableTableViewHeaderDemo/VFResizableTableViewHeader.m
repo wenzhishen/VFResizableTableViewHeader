@@ -16,13 +16,15 @@
 @property (nonatomic) CGFloat initialHeight;
 @end
 
+static NSString * const ObservedKeyPath = @"contentOffset";
+
 @implementation VFResizableTableViewHeader
 - (instancetype)initWithTableView:(UITableView *)tableView initialHeight:(CGFloat)height {
     self = [super initWithFrame:CGRectMake(0, -height, CGRectGetWidth([UIScreen mainScreen].bounds), height)];
     if (self) {
         self.tableView = tableView;
         self.initialHeight = height;
-        [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+        [self.tableView addObserver:self forKeyPath:ObservedKeyPath options:NSKeyValueObservingOptionNew context:nil];
         [self createSubviews];
     }
     
@@ -30,7 +32,7 @@
 }
 
 - (void)dealloc {
-    [self.tableView removeObserver:self forKeyPath:@"contenOffset" context:nil];
+    [self.tableView removeObserver:self forKeyPath:ObservedKeyPath context:nil];
 }
 
 - (void)createSubviews {
@@ -42,7 +44,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"contentOffset"]) {
+    if ([keyPath isEqualToString:ObservedKeyPath]) {
         NSValue *value = change[NSKeyValueChangeNewKey];
         CGPoint contentOffset = value.CGPointValue;
         if (contentOffset.y < -self.initialHeight - 64.f) {
