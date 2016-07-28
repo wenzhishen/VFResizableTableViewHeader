@@ -54,6 +54,7 @@
 		04331FB11D48D27900211CE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04331FBD1D48D36A00211CE2 /* VFResizableTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VFResizableTableViewHeader.h; sourceTree = "<group>"; };
 		04331FBE1D48D36A00211CE2 /* VFResizableTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VFResizableTableViewHeader.m; sourceTree = "<group>"; };
+		045BE9E71D499C20006E8BCF /* Marcoes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Marcoes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 				04331F911D48D27900211CE2 /* ViewController.m */,
 				04331FBD1D48D36A00211CE2 /* VFResizableTableViewHeader.h */,
 				04331FBE1D48D36A00211CE2 /* VFResizableTableViewHeader.m */,
+				045BE9E71D499C20006E8BCF /* Marcoes.h */,
 				04331F931D48D27900211CE2 /* Main.storyboard */,
 				04331F961D48D27900211CE2 /* Assets.xcassets */,
 				04331F981D48D27900211CE2 /* LaunchScreen.storyboard */,

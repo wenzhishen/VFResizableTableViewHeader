@@ -7,6 +7,7 @@
 //
 
 #import "VFResizableTableViewHeader.h"
+#import "Marcoes.h"
 
 
 @interface VFResizableTableViewHeader ()
@@ -21,7 +22,6 @@
     if (self) {
         self.tableView = tableView;
         self.initialHeight = height;
-        self.clipsToBounds = YES;
         [self.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         [self createSubviews];
     }
@@ -30,7 +30,6 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
     [self.tableView removeObserver:self forKeyPath:@"contenOffset" context:nil];
 }
 
@@ -46,12 +45,14 @@
     if ([keyPath isEqualToString:@"contentOffset"]) {
         NSValue *value = change[NSKeyValueChangeNewKey];
         CGPoint contentOffset = value.CGPointValue;
-        NSLog(@"%lf", contentOffset.y);
         if (contentOffset.y < -self.initialHeight - 64.f) {
             CGRect frame = self.backgroundImageView.frame;
-            frame.size.height = -contentOffset.y;
+            CGFloat height = - contentOffset.y;
+            DebugLog(@"%lf", height);
+            frame.size.height = height;
+            // Aligned background image view's bottom with bottom of its superview
+            frame.origin.y = self.initialHeight - height;
             self.backgroundImageView.frame = frame;
-            // 保持Center不变
         }
     }
     else {
